@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cara ou Coroa com PA</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      color: #333;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    .resultado {
+      font-size: 24px;
+      margin-top: 30px;
+    }
+    .pontuacao {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Jogo Cara ou Coroa com Progressão Aritmética (PA)</h1>
+  <p>Clique no botão para jogar e tente adivinhar o resultado!</p><button onclick="jogar('cara')">Apostar em Cara</button> <button onclick="jogar('coroa')">Apostar em Coroa</button>
+
+  <div class="resultado" id="resultado"></div>
+  <div class="pontuacao" id="pontuacao"></div> <script>
+    let pontuacao = 0;
+    let razao = 5;
+    let rodada = 1;
+
+    function jogar(aposta) {
+      const resultadoMoeda = Math.random() < 0.5 ? 'cara' : 'coroa';
+      let mensagem = `Resultado da moeda: ${resultadoMoeda.toUpperCase()}<br>`;
+
+      if (aposta === resultadoMoeda) {
+        pontuacao += razao;
+        mensagem += 'Você acertou! Pontuação aumentada.';
+      } else {
+        pontuacao -= razao;
+        mensagem += 'Você errou! Pontuação diminuída.';
+      }
+
+      document.getElementById('resultado').innerHTML = mensagem;
+      document.getElementById('pontuacao').innerHTML = `Pontuação (PA): ${pontuacao}`;
+      rodada++;
+    }
+  </script></body>
+</html>
